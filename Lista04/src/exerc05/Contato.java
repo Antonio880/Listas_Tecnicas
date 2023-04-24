@@ -79,8 +79,7 @@ public class Contato {
 			}else {
 				controle = false;
 			}
-		}while(!controle);
-		this.codigo = codigo;
+		}while(controle);
 	}
 
 	public String getNome() {
@@ -113,7 +112,6 @@ public class Contato {
 				controle = false;
 			}
 		}while(!controle);
-		this.telefone = telefone;
 	}
 
 	public String getObservacao() {
@@ -128,30 +126,20 @@ public class Contato {
 		return email;
 	}
 	
-	public void ImprimirCodigo() {
+	public void ImprimirDados() {
 		System.out.println("Código: " + this.codigo);
-	}
-	
-	public void ImprimirNome() {
 		System.out.println("Nome: " + this.nome);
+		System.out.println("Endereco: " + this.endereco);
+		System.out.println("Email: " + this.email);
+		System.out.println("Telefone: " + this.telefone);
+		System.out.println("Observacao: " + this.observacao);
+		
 	}
 	
-	public void ImprimirEndereco() {
-		System.out.println("Endereco: " + this.endereco);
-	}
-	public void ImprimirEmail() {
-		System.out.println("Email: " + this.email);
-	}
-	public void ImprimirTelefone() {
-		System.out.println("Telefone: " + this.telefone);
-	}
-	public void ImprimirObservacao() {
-		System.out.println("Obeservacao: " + this.observacao);
-	}
 	
 	public Contato duplicarContato() {
 		//Contato contato = new Contato(codigo, email, email, codigo);
-		return new Contato(this.codigo, this.email, this.endereco, this.telefone);
+		return new Contato(this.codigo, this.nome, this.email, this.telefone);
 	}
 	
 	public boolean verificarPreenchimento() {
