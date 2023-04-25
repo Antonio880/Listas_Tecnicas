@@ -24,9 +24,13 @@ public class Main {
 			System.out.println("Está tudo cadastrado");
 		}
 		
-		Cliente cliente = new Cliente();
+		Contato listaContato = new Contato(1010);
+		
+		Agenda agenda = new Agenda(listaContato);
+		
+		Cliente cliente = new Cliente(agenda);
 		
 		cliente.agenda.listaContato.setCodigo(1002);
-		cliente.agenda.listaContato.getCodigo();
+		System.out.println(cliente.agenda.listaContato.getCodigo());
 	}
 }
