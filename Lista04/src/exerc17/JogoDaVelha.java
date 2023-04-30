@@ -27,47 +27,48 @@ public class JogoDaVelha {
 	public void Jogo() {
 		Scanner input = new Scanner(System.in);
 		boolean controle = true;
-		do {
-			System.out.println("Seja Bem-Vindo " + usuario1.getNome() + " e " + usuario2.getNome() + " ao Jogo da Velha");
-			System.out.println();
-			System.out.println("Agora vamos começar a partida!");
-			System.out.println();
-			System.out.println();
+			
+		System.out.println("Seja Bem-Vindo " + usuario1.getNome() + " e " + usuario2.getNome() + " ao Jogo da Velha");
+		System.out.println();
+		System.out.println("Agora vamos começar a partida!");
+		System.out.println();
+		System.out.println();
 				
 				do {
-				gradeJogo();
-					if(verificarVitoriaX(grade) == true || verificarVitoriaO(grade) == true) {
+					gradeJogo();
+					if(verificarVitoriaX(grade) == true && verificarVitoriaO(grade) == true) {
+							
 						
-					
 						do {
 							System.out.println();
 							System.out.println("Digite a posição que deseja colocar o X");
 							int i = input.nextInt();
 							int j = input.nextInt();
 							controle = verificarX(grade, i, j);
-							
+							controle = verificarEmpate(grade);	
 						}while(!controle);
-		
+			
 						do {
 							System.out.println();
 							System.out.println("Digite a posição que deseja colocar o O");
 							int i = input.nextInt();
 							int j = input.nextInt();
 							controle = verificarO(grade,i,j);
-							
+							controle = verificarEmpate(grade);
 						}while(!controle);
+					}else {
+						controle = false;
 					}
-				}while(!controle);
+				}while(controle);
 				
-			}while(controle);
 	}
 	
 	public boolean verificarVitoriaX( String grade[][]) {
 		if((grade[0][0] == "X" && grade[1][0] == "X"&& grade[2][0] == "X") || (grade[0][1] == "X" && grade[1][1] == "X"&& grade[2][1] == "X") || (grade[0][2] == "X" && grade[1][2] == "X"&& grade[2][2] == "X")) {
-			System.out.println("Parabéns, O jogador!!");
+			System.out.println("Parabéns, O jogador " + usuario1.getNome() + "ganhou!!");
 			return false;
 		}else if((grade[0][0] == "X" && grade[1][1] =="X" && grade[2][2] == "X") || (grade[0][2] == "X" && grade[1][1] =="X" && grade[2][0] == "X")) {
-			System.out.println("Parabéns, Você ganhou!!");
+			System.out.println("Parabéns, O jogador " + usuario1.getNome() + "ganhou!!");
 			return false;
 		}else {
 			return true;
@@ -76,10 +77,10 @@ public class JogoDaVelha {
 	
 	public boolean verificarVitoriaO(String grade[][]) {
 		if((grade[0][0] == "O" && grade[1][0] == "O" && grade[2][0] == "O") || (grade[0][1] == "O" && grade[1][1] == "O"&& grade[2][1] == "O") || (grade[0][2] == "O" && grade[1][2] == "O"&& grade[2][2] == "O")) {
-			System.out.println("Parabéns, Você ganhou!!");
+			System.out.println("Parabéns, O jogador " + usuario2.getNome() + "ganhou!!");
 			return false;
 		}else if((grade[0][0] == "O" && grade[1][1] =="O" && grade[2][2] == "O") || (grade[0][2] == "O" && grade[1][1] =="O" && grade[2][0] == "O")) {
-			System.out.println("Parabéns, Você ganhou!!");
+			System.out.println("Parabéns, O jogador " + usuario2.getNome() + "ganhou!!");
 			return false;
 		}else {
 			return true;
@@ -105,4 +106,21 @@ public class JogoDaVelha {
 		}
 	}
 	
+	public boolean verificarEmpate(String grade[][]) {
+		boolean controle;
+		for (int i = 0; i < grade.length; i++) {
+			for (int j = 0; j < grade.length; j++) {
+				if(grade[i][j] == " ") {
+					controle = true;
+				}else {
+					controle = false;
+				}
+			}
+		}
+		if(controle = false) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 }
