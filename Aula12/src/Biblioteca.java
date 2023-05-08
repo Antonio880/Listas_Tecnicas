@@ -92,16 +92,64 @@ public class Biblioteca {
 	    int totalLivrosProfessor = 0;
 	    int totalLivrosAluno = 0;
 	    int totalLivrosServidor = 0;
-	    for (Emprestimo emprestimo2 : listaEmprestimo) {
-	        if (emprestimo2.publicacao instanceof Livros) {
-	            totalLivrosProfessor += emprestimosLivrosProfessor();
-	            totalLivrosAluno += emprestimosLivrosAlunos();
-	            totalLivrosServidor += emprestimosLivrosServidor();
-	            
+	    
+	    int totalArtigosProfessor = 0;
+	    int totalArtigosAluno = 0;
+	    int totalArtigosServidor = 0;
+	    
+	    int totalTccProfessor = 0;
+	    int totalTccAluno = 0;
+	    int totalTccServidor = 0;
+	    
+	    int totalRevistasProfessor = 0;
+	    int totalRevistasAluno = 0;
+	    int totalRevistasServidor = 0;
+
+	    for (Emprestimo emprestimo : listaEmprestimo) {
+	        Publicacoes publicacao = emprestimo.publicacao;
+	        if (emprestimo.publicacao instanceof Livros) {
+	            if ( emprestimo.cliente instanceof Professor) {
+	                totalLivrosProfessor += emprestimo.cliente.publicacoesEmprestadas.size();
+	            } else if (emprestimo.cliente instanceof Aluno) {
+	                totalLivrosAluno += emprestimo.cliente.publicacoesEmprestadas.size();
+	            } else if (emprestimo.cliente instanceof Servidores) {
+	                totalLivrosServidor += emprestimo.cliente.publicacoesEmprestadas.size();
+	            }
+	        } else if (publicacao instanceof Artigo) {
+	            if (emprestimo.cliente instanceof Professor) {
+	                totalArtigosProfessor += emprestimo.cliente.publicacoesEmprestadas.size();
+	            } else if (emprestimo.cliente instanceof Aluno) {
+	                totalArtigosAluno += emprestimo.cliente.publicacoesEmprestadas.size();
+	            } else if (emprestimo.cliente instanceof Servidores) {
+	                totalArtigosServidor += emprestimo.cliente.publicacoesEmprestadas.size();
+	            }
+	        } else if (publicacao instanceof TCC) {
+	            if (emprestimo.cliente instanceof Professor) {
+	                totalTccProfessor += emprestimo.cliente.publicacoesEmprestadas.size();
+	            } else if (emprestimo.cliente instanceof Aluno) {
+	                totalTccAluno += emprestimo.cliente.publicacoesEmprestadas.size();
+	            } else if (emprestimo.cliente instanceof Servidores) {
+	                totalTccServidor += emprestimo.cliente.publicacoesEmprestadas.size();
+	            }
+	        } else if (publicacao instanceof Revista) {
+	            if (emprestimo.cliente instanceof Professor) {
+	                totalRevistasProfessor += emprestimo.cliente.publicacoesEmprestadas.size();
+	            } else if (emprestimo.cliente instanceof Aluno) {
+	                totalRevistasAluno += emprestimo.cliente.publicacoesEmprestadas.size();
+	            } else if (emprestimo.cliente instanceof Servidores) {
+	                totalRevistasServidor += emprestimo.cliente.publicacoesEmprestadas.size();
+	            }
 	        }
-	        System.out.println(emprestimo2.publicacao.tipo + ": Total " + emprestimo2.totalLivros + "- Professor: " + totalLivrosProfessor + " Aluno: " + totalLivrosAluno + " Servidores: " + totalLivrosServidor);
 	    }
+	    System.out.println("Livros: Total " + (totalLivrosAluno + totalLivrosProfessor + totalLivrosServidor) + " - Professor: " + totalLivrosProfessor + " - Aluno: " + totalLivrosAluno + " - Servidores: " + totalLivrosServidor);
+		System.out.println("Artigo: Total " + (totalArtigosAluno + totalArtigosProfessor + totalArtigosServidor) + " - Professor: " + totalArtigosProfessor + " - Aluno: " + totalArtigosAluno + " - Servidores: " + totalArtigosServidor);
+		System.out.println("TCC: Total " + (totalTccAluno + totalTccProfessor + totalTccServidor) + " - Professor: " + totalTccProfessor + " - Aluno: " + totalTccAluno + " - Servidores: " + totalTccServidor);
+		System.out.println("Revistas: Total " + (totalRevistasAluno + totalRevistasProfessor + totalRevistasServidor) + " - Professor: " + totalRevistasProfessor + " - Aluno: " + totalRevistasAluno + " - Servidores: " + totalRevistasServidor);
 	}
+	
+	/*
+	 * Ficará faltando somente colocar o nome no relatório de Emprestimo
+	 * */
 
 	
 	public int emprestimosLivrosProfessor() {
@@ -245,12 +293,10 @@ public class Biblioteca {
 	}
 	
 	public void buscaPublicacoes(String nome) {
-		for (Emprestimo emprestimo : listaEmprestimo) {
-			System.out.println("BUSCA POR NOMES DAS PUBLICACOES");
-			for (int i = 0; i < listaPublicacoes.size(); i++) {
-				if(nome == listaPublicacoes.get(i).titulo) {
-					System.out.println("A Publicacao eh do tipo: " + listaPublicacoes.get(i).tipo + " e tem a seguinte quantidade em estoque: " + listaPublicacoes.get(i).quantidade);
-				}
+		System.out.println("BUSCA POR NOMES DAS PUBLICACOES");
+		for (int i = 0; i < listaPublicacoes.size(); i++) {
+			if(nome == listaPublicacoes.get(i).titulo) {
+				System.out.println("A Publicacao eh do tipo: " + listaPublicacoes.get(i).tipo + " e tem a seguinte quantidade em estoque: " + listaPublicacoes.get(i).quantidade);
 			}
 		}
 	}

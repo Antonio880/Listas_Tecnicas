@@ -18,7 +18,7 @@ public class Emprestimo {
 			cliente.calcularDias();
 			cliente.TPs = cliente.calcularDivida();
 			double calculoTPs = this.descontoEmprestimo();
-			cliente.TPs = calculoTPs;
+			cliente.TPs -= calculoTPs;
 			System.out.println(cliente.tipoCliente + ": " + cliente.diasEmprestimo + " dias.");
 			System.out.println(cliente.tipoCliente + ": " + calculoTPs + " tps.");
 			if(cliente.TPs % 50 == 0) {

@@ -30,8 +30,8 @@ public class Main {
 		
 		//tecProg.consultaMatricula(123455);
 		//tecProg.relatorioClientes();
-		
+		//tecProg.buscaPublicacoes("fisherMaluco");
 		//tecProg.relatorioAcervo();
-		tecProg.relatorioEmprestimos();
+		//tecProg.relatorioEmprestimos();
 	}
 }
