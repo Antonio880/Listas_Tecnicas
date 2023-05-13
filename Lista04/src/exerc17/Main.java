@@ -7,8 +7,8 @@ public class Main {
 
 		Usuario usuario1 = new Usuario("Antonio");
 		Usuario usuario2 = new Usuario("Thais");
-		JogoDaVelha jogo = new JogoDaVelha(usuario1, usuario2);
-		jogo.Jogo();
+		Jogo jogo = new Jogo(usuario1, usuario2);
+		
 	}
 
 }

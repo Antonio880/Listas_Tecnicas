@@ -13,6 +13,12 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	public int getVitorias() {
+		return vitorias;
+	}
+	public void setVitorias(int vitorias) {
+		this.vitorias = vitorias;
+	}
 	
 	
 }
