@@ -25,17 +25,14 @@ public class Jogo extends JogoDaVelha{
 
 				do {
 					if(listagem < 9) {
-						try{
-							System.out.println();
-							System.out.println("Digite a posição que deseja colocar o X");
-							int i = input.nextInt();
-							int j = input.nextInt();
-							controle = verificarX(grade, i, j);
-							listagem++;
-						}catch(InputMismatchException e) {
-							System.out.println("Digite um numero valido!");
-							controle = false;
-						}
+				
+						System.out.println();
+						System.out.println("Digite a posição que deseja colocar o X");
+						int i = input.nextInt();
+						int j = input.nextInt();
+						controle = verificarX(grade, i, j);
+						listagem++;
+						
 					}else {
 						System.out.println("Deu Velha!");
 						controle = false;
@@ -49,17 +46,13 @@ public class Jogo extends JogoDaVelha{
 
 				do {
 					if(listagem < 9) {
-						try {
-							System.out.println();
-							System.out.println("Digite a posição que deseja colocar o O");
-							int i = input.nextInt();
-							int j = input.nextInt();
-							controle = verificarO(grade,i,j);
-							listagem++;
-						}catch(ArrayIndexOutOfBoundsException e) {
-							System.out.println("Deu Velha!");
-							controle = false;
-						}
+						
+						System.out.println();
+						System.out.println("Digite a posição que deseja colocar o O");
+						int i = input.nextInt();
+						int j = input.nextInt();
+						controle = verificarO(grade,i,j);
+						listagem++;
 					}else {
 						System.out.println("Deu Velha!");
 						controle = false;

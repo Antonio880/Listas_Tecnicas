@@ -29,11 +29,11 @@ public abstract class JogoDaVelha {
 	public boolean verificarVitoriaX( String grade[][]) {
 		if((grade[0][0] == "X" && grade[1][0] == "X"&& grade[2][0] == "X") || (grade[0][1] == "X" && grade[1][1] == "X"&& grade[2][1] == "X") || (grade[0][2] == "X" && grade[1][2] == "X"&& grade[2][2] == "X")) {
 			usuario1.setVitorias(usuario1.getVitorias() + 1);
-			System.out.println("Parabéns, O jogador " + usuario1.getNome() + "ganhou!! E atualmente esta com " +  usuario1.getVitorias() + " vitórias!!");
+			System.out.println("Parabéns, O jogador " + usuario1.getNome() + " ganhou!! E atualmente esta com " +  usuario1.getVitorias() + " vitórias!!");
 			return false;
 		}else if((grade[0][0] == "X" && grade[1][1] =="X" && grade[2][2] == "X") || (grade[0][2] == "X" && grade[1][1] =="X" && grade[2][0] == "X")) {
 			usuario1.setVitorias(usuario1.getVitorias() + 1);
-			System.out.println("Parabéns, O jogador " + usuario1.getNome() + "ganhou!! E atualmente esta com " +  usuario1.getVitorias() + " vitórias!!");
+			System.out.println("Parabéns, O jogador " + usuario1.getNome() + " ganhou!! E atualmente esta com " +  usuario1.getVitorias() + " vitórias!!");
 			return false;
 		}else {
 			return true;
@@ -43,11 +43,11 @@ public abstract class JogoDaVelha {
 	public boolean verificarVitoriaO(String grade[][]) {
 		if((grade[0][0] == "O" && grade[1][0] == "O" && grade[2][0] == "O") || (grade[0][1] == "O" && grade[1][1] == "O"&& grade[2][1] == "O") || (grade[0][2] == "O" && grade[1][2] == "O"&& grade[2][2] == "O")) {
 			usuario2.setVitorias(usuario2.getVitorias() + 1);
-			System.out.println("Parabéns, O jogador " + usuario2.getNome() + "ganhou!! E atualmente esta com " +  usuario2.getVitorias() + " vitórias!!");
+			System.out.println("Parabéns, O jogador " + usuario2.getNome() + " ganhou!! E atualmente esta com " +  usuario2.getVitorias() + " vitórias!!");
 			return false;
 		}else if((grade[0][0] == "O" && grade[1][1] =="O" && grade[2][2] == "O") || (grade[0][2] == "O" && grade[1][1] =="O" && grade[2][0] == "O")) {
 			usuario2.setVitorias(usuario2.getVitorias() + 1);
-			System.out.println("Parabéns, O jogador " + usuario2.getNome() + "ganhou!! E atualmente esta com " +  usuario2.getVitorias() + " vitórias!!");
+			System.out.println("Parabéns, O jogador " + usuario2.getNome() + " ganhou!! E atualmente esta com " +  usuario2.getVitorias() + " vitórias!!");
 			return false;
 		}else {
 			return true;
