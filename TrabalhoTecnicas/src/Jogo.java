@@ -10,18 +10,17 @@ public class Jogo {
 	}
 	
 	public void Grade() {
-		Celula aux = null;
 		for (Celula celula : plano.listaCelulas) {
 			if(celula.listaRobos.size() != 0){
 				for(Robo robo : celula.listaRobos) {
-					if(robo != null && robo instanceof Andador)
-						System.out.print(" A ");
-					//if(aux.robo != null && aux.robo instanceof Peao)
-						//System.out.print(" P ");
-					//if(aux.robo != null && aux.robo instanceof Torre)
-						//System.out.print(" T ");
+					if(robo	!= null && robo instanceof Andador)
+						System.out.print(robo.tipo);
+					if(robo != null && robo instanceof Peao)
+						System.out.print(robo.tipo);
+					if(robo != null && robo instanceof Torre)
+						System.out.print(" T ");
 					if(robo != null && robo instanceof Bispo)
-						System.out.print(" B ");
+						System.out.print(robo.tipo);
 					//if(aux.robo != null && aux.robo instanceof Cavalo)
 						//System.out.print(" C ");
 					//if(aux.robo != null && aux.robo instanceof Rei)

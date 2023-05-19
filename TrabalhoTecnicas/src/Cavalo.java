@@ -8,7 +8,7 @@ public class Cavalo extends Robo{
 
 	public String verificarRobo() {
 		for (int i = 0; i < plano.listaCelulas.size(); i++) {
-			if(plano.listaCelulas.get(i).robo != null) {
+			if(plano.listaCelulas.get(i).listaRobos.get(i) != null && plano.listaCelulas.get(i).listaRobos.get(i) instanceof Andador) {
 				return "X : " + plano.listaCelulas.get(i).posicaoXCelula + " Y : " + plano.listaCelulas.get(i).posicaoYCelula; 
 			}
 		}

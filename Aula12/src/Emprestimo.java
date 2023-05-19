@@ -20,7 +20,7 @@ public class Emprestimo {
 			double calculoTPs = this.descontoEmprestimo();
 			cliente.TPs -= calculoTPs;
 			System.out.println(cliente.tipoCliente + ": " + cliente.diasEmprestimo + " dias.");
-			System.out.println(cliente.tipoCliente + ": " + calculoTPs + " tps.");
+			System.out.println(cliente.tipoCliente + ": " + cliente.TPs + " tps.");
 			if(cliente.TPs % 50 == 0) {
 				System.out.println("Você precisa doar uma publicacao!!");
 			}

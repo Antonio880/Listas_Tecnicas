@@ -3,7 +3,7 @@ public class Andador extends Robo{
 
 	public Andador(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		super(id, nome, posicaox, posicaoy, plano);
-		// TODO Auto-generated constructor stub
+		tipo = " A ";
 	}
 	
 	//Primeiro crio um metodo para identificar se tem robo e onde
@@ -72,4 +72,6 @@ public class Andador extends Robo{
 			}
 		}
 	}
+
+
 }

@@ -1,11 +1,12 @@
 
-public abstract class Robo {
+public abstract class Robo{
 
 	public int id;
 	public String nome;
 	public int posicaoXRobo;
 	public int posicaoYRobo;
 	public Plano plano;
+	public String tipo;
 
 	public Robo(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		this.id = id;
