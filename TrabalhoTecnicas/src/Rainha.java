@@ -1,14 +1,14 @@
 
-public class Cavalo extends Robo{
+public class Rainha extends Robo{
 
-	public Cavalo(int id, String nome, int posicaox, int posicaoy, Plano plano) {
+	public Rainha(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		super(id, nome, posicaox, posicaoy, plano);
-		tipo = " C ";
+		tipo = " § ";
 	}
 
 	public String verificarRobo() {
 		for (int i = 0; i < plano.listaCelulas.size(); i++) {
-			if(plano.listaCelulas.get(i).listaRobos.get(i) != null && plano.listaCelulas.get(i).listaRobos.get(i) instanceof Cavalo) {
+			if(plano.listaCelulas.get(i).listaRobos.get(i) != null && plano.listaCelulas.get(i).listaRobos.get(i) instanceof Bispo) {
 				return "X : " + plano.listaCelulas.get(i).posicaoXCelula + " Y : " + plano.listaCelulas.get(i).posicaoYCelula; 
 			}
 		}
@@ -19,23 +19,24 @@ public class Cavalo extends Robo{
 		Celula novaCelula = null;
 		int novaPosicaoX = 0;
 		int novaPosicaoY = 0;
-		if(celulasParaAvancar <= 2 && celulasParaAvancar >= 0) {
+		if(celulasParaAvancar <= 4 && celulasParaAvancar >= 0) {
 			for (Celula celula : plano.listaCelulas) {
 				for (Robo robo : celula.listaRobos) {
 					if(robo == this) {
 						novaPosicaoX = this.posicaoXRobo;
 						novaPosicaoY = this.posicaoYRobo;
 						for(int j = 1, h = 1; h <= celulasParaAvancar; h++) {
-							if(novaPosicaoX <= plano.tamanhoXPlano && novaPosicaoY >= plano.tamanhoYPlano ){
-								novaPosicaoX = 0;
-								novaPosicaoY = plano.tamanhoYPlano;
-							}else if(novaPosicaoX > plano.tamanhoXPlano && novaPosicaoY >= plano.tamanhoYPlano) {
-								novaPosicaoY = plano.tamanhoYPlano;
+							if(novaPosicaoY <= 1 ){
+								novaPosicaoY = 1;
+							}else if(novaPosicaoY <=1 && novaPosicaoX <=1) {
+								novaPosicaoX = 1;
+								novaPosicaoY = 1;
 							}else {
 								novaPosicaoX -= j;
-								novaPosicaoY += j;
+								novaPosicaoY -= j;
 							}
 						}
+						
 						novaCelula = plano.retornarCelula(novaPosicaoX, novaPosicaoY);
 					}	
 				}
@@ -59,22 +60,21 @@ public class Cavalo extends Robo{
 		Celula novaCelula = null;
 		int novaPosicaoX = 0;
 		int novaPosicaoY = 0;
-		if(celulasParaAvancar <= 2 && celulasParaAvancar >= 0) {
+		if(celulasParaAvancar <= 4 && celulasParaAvancar >= 0) {
 			for (Celula celula : plano.listaCelulas) {
 				for (Robo robo : celula.listaRobos) {
 					if(robo == this) {
 						novaPosicaoX = this.posicaoXRobo;
 						novaPosicaoY = this.posicaoYRobo;
 						for(int j = 1, h = 1; h <= celulasParaAvancar; h++) {
-							if(novaPosicaoX >= plano.tamanhoXPlano && novaPosicaoY <= 1 ){
+							if(novaPosicaoX >= plano.tamanhoXPlano ){
 								novaPosicaoX = plano.tamanhoXPlano;
-								novaPosicaoY = 1;
-							}else if(novaPosicaoX <= plano.tamanhoXPlano && novaPosicaoX <= 1) {
+							}else if(novaPosicaoY >= plano.tamanhoYPlano && novaPosicaoX >= plano.tamanhoXPlano) {
 								novaPosicaoX = plano.tamanhoXPlano;
-								novaPosicaoY = 1;
+								novaPosicaoY = plano.tamanhoYPlano;
 							}else {
 								novaPosicaoX += j;
-								novaPosicaoY -= j;
+								novaPosicaoY += j;
 							}
 						}
 						novaCelula = plano.retornarCelula(novaPosicaoX, novaPosicaoY);
@@ -82,13 +82,15 @@ public class Cavalo extends Robo{
 				}
 			}
 			for(Celula celula : plano.listaCelulas) {
+				if((posicaoXRobo == celula.posicaoXCelula && posicaoYRobo == celula.posicaoYCelula) && celula.listaRobos.contains(this)) {
+					celula.listaRobos.remove(this);
+				}
 				if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
 					this.posicaoXRobo = novaPosicaoX;
 					this.posicaoYRobo = novaPosicaoY;
 					celula.listaRobos.add(this);
-				}else {
-					celula.listaRobos.remove(this);
 				}
+				
 			}
 		}else {
 			System.out.println("-----MOVIMENTO INVALIDO-----");

@@ -3,7 +3,7 @@ public class Torre extends Robo{
 
 	public Torre(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		super(id, nome, posicaox, posicaoy, plano);
-		// TODO Auto-generated constructor stub
+		tipo = " T ";
 	}
 
 	
@@ -58,8 +58,8 @@ public class Torre extends Robo{
 					if(robo == this) {
 						novaPosicaoX = this.posicaoXRobo + celulasParaAvancar;
 						novaPosicaoY = this.posicaoYRobo;
-						if(novaPosicaoX <= 1){
-							novaPosicaoX = 1;
+						if(novaPosicaoX >= plano.tamanhoXPlano){
+							novaPosicaoX = plano.tamanhoXPlano;
 						}
 						novaCelula = plano.retornarCelula(novaPosicaoX, novaPosicaoY);
 					}	

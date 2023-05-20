@@ -34,7 +34,7 @@ public abstract class Robo{
 	}
 	public abstract String verificarRobo();
 	
-	public void Avancar() {};
+	public  void Avancar() {};
 	
 	public void Retroceder() {};
 	

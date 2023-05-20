@@ -11,21 +11,29 @@ public class Jogo {
 	
 	public void Grade() {
 		for (Celula celula : plano.listaCelulas) {
-			if(celula.listaRobos.size() != 0){
-				for(Robo robo : celula.listaRobos) {
-					if(robo	!= null && robo instanceof Andador)
-						System.out.print(robo.tipo);
-					if(robo != null && robo instanceof Peao)
-						System.out.print(robo.tipo);
-					if(robo != null && robo instanceof Torre)
-						System.out.print(" T ");
-					if(robo != null && robo instanceof Bispo)
-						System.out.print(robo.tipo);
-					//if(aux.robo != null && aux.robo instanceof Cavalo)
-						//System.out.print(" C ");
-					//if(aux.robo != null && aux.robo instanceof Rei)
-						//System.out.print(" R ");
-				}
+			if(!celula.listaRobos.isEmpty()){
+				System.out.print(celula.listaRobos.get(celula.listaRobos.size() - 1).tipo);
+				//for(Robo robo : celula.listaRobos) {
+					//if(robo instanceof Andador)
+						//System.out.print(robo.tipo);
+					//if(robo instanceof Peao)
+						//System.out.print(robo.tipo);
+					//if(robo instanceof Torre)
+						//System.out.print(robo.tipo);
+					//if(robo instanceof Bispo)
+						//System.out.print(robo.tipo);
+					//if(robo instanceof Cavalo)
+						//System.out.print(robo.tipo);
+					//if(robo instanceof Rei)
+						//System.out.print(robo.tipo);
+					//if(robo instanceof Rainha) 
+						//System.out.print(robo.tipo);
+					//}
+			}else if(celula.modelo != null) {
+				if(celula.modelo instanceof Aluno)
+					System.out.print(celula.modelo.tipo);
+				if(celula.modelo instanceof Bug) 
+					System.out.print(celula.modelo.tipo);
 			}else 
 				System.out.print(" * ");
 			if(celula.posicaoYCelula % plano.tamanhoYPlano == 0) {
