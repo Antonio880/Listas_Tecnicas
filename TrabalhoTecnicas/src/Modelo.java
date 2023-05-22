@@ -2,16 +2,14 @@ import java.util.Random;
 
 public abstract class Modelo {
 	
-	public String nome;
 	public int posicaoXModelo;
 	public int posicaoYModelo;
 	public Plano plano;
 	public String tipo;
 	public Random random;
 
-	public Modelo(String nome, Plano plano) {
+	public Modelo(Plano plano) {
 		random = new Random();
-		this.nome = nome;
 		boolean controle;
 		this.plano = plano;
 		

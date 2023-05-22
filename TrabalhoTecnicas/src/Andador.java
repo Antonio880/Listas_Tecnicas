@@ -6,6 +6,8 @@ public class Andador extends Robo{
 		tipo = " A ";
 	}
 	
+	
+	
 	//Primeiro crio um metodo para identificar se tem robo e onde
 	
 	public String verificarRobo() {
@@ -16,7 +18,6 @@ public class Andador extends Robo{
 		}
 		return null;
 	}
-
 	
 	public void Avancar(int celulasParaAvancar) {
 		Celula novaCelula = null;
@@ -72,6 +73,4 @@ public class Andador extends Robo{
 			}
 		}
 	}
-
-
 }

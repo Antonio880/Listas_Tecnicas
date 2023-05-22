@@ -1,8 +1,8 @@
 
 public class Bug extends Modelo{
 
-	public Bug(String nome, Plano plano) {
-		super(nome, plano);
+	public Bug(Plano plano) {
+		super(plano);
 		tipo = " # ";
 	}
 

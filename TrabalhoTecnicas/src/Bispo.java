@@ -96,4 +96,9 @@ public class Bispo extends Robo{
 			System.out.println("-----MOVIMENTO INVALIDO-----");
 		}
 	}
+	@Override
+	public void addPontos() {
+		// TODO Auto-generated method stub
+		this.pontos += 10;
+	}
 }

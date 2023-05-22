@@ -7,6 +7,7 @@ public abstract class Robo{
 	public int posicaoYRobo;
 	public Plano plano;
 	public String tipo;
+	public int pontos;
 
 	public Robo(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		this.id = id;
@@ -14,6 +15,7 @@ public abstract class Robo{
 		this.posicaoXRobo = posicaox;
 		this.posicaoYRobo = posicaoy;
 		this.plano = plano;
+		pontos = 0;
 
 		boolean controle;
 		
@@ -32,11 +34,20 @@ public abstract class Robo{
 			}
 		}while(controle);
 	}
+	
 	public abstract String verificarRobo();
 	
 	public  void Avancar() {};
 	
-	public void Retroceder() {};
+	public void Retroceder() {}
+
+	public void addPontos() {
+		this.pontos += 10;
+	};
+	
+	public void removePoints() {
+		this.pontos -= 15;
+	}
 	
 	//Coloco abstrato pois ele sera a classe pai de todos os outros robos que eu for criar
 	
