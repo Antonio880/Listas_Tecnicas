@@ -4,6 +4,7 @@ public class Cavalo extends Robo{
 	public Cavalo(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		super(id, nome, posicaox, posicaoy, plano);
 		tipo = " C ";
+		quantidadeMaxima = 2;
 	}
 
 	public String verificarRobo() {
@@ -26,10 +27,11 @@ public class Cavalo extends Robo{
 						novaPosicaoX = this.posicaoXRobo;
 						novaPosicaoY = this.posicaoYRobo;
 						for(int j = 1, h = 1; h <= celulasParaAvancar; h++) {
-							if(novaPosicaoX <= plano.tamanhoXPlano && novaPosicaoY >= plano.tamanhoYPlano ){
-								novaPosicaoX = 0;
+							if(novaPosicaoX < plano.tamanhoXPlano && novaPosicaoY > plano.tamanhoYPlano ){
+								novaPosicaoX = 1;
 								novaPosicaoY = plano.tamanhoYPlano;
-							}else if(novaPosicaoX > plano.tamanhoXPlano && novaPosicaoY >= plano.tamanhoYPlano) {
+							}else if(novaPosicaoY > plano.tamanhoYPlano) {
+								novaPosicaoX = plano.tamanhoXPlano;
 								novaPosicaoY = plano.tamanhoYPlano;
 							}else {
 								novaPosicaoX -= j;
@@ -69,9 +71,8 @@ public class Cavalo extends Robo{
 							if(novaPosicaoX >= plano.tamanhoXPlano && novaPosicaoY <= 1 ){
 								novaPosicaoX = plano.tamanhoXPlano;
 								novaPosicaoY = 1;
-							}else if(novaPosicaoX <= plano.tamanhoXPlano && novaPosicaoX <= 1) {
+							}else if(novaPosicaoX >= plano.tamanhoXPlano) {
 								novaPosicaoX = plano.tamanhoXPlano;
-								novaPosicaoY = 1;
 							}else {
 								novaPosicaoX += j;
 								novaPosicaoY -= j;

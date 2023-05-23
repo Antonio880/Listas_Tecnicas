@@ -7,6 +7,7 @@ public abstract class Robo{
 	public int posicaoYRobo;
 	public Plano plano;
 	public String tipo;
+	public int quantidadeMaxima;
 	public int pontos;
 
 	public Robo(int id, String nome, int posicaox, int posicaoy, Plano plano) {

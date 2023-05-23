@@ -4,6 +4,7 @@ public class Peao extends Robo{
 	public Peao(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		super(id, nome, posicaox, posicaoy, plano);
 		tipo = " P ";
+		quantidadeMaxima = 1;
 	}
 
 	public String verificarRobo() {

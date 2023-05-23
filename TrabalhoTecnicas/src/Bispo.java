@@ -4,6 +4,7 @@ public class Bispo extends Robo{
 	public Bispo(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		super(id, nome, posicaox, posicaoy, plano);
 		tipo = " B ";
+		quantidadeMaxima = 2;
 	}
 
 	public String verificarRobo() {
@@ -26,9 +27,9 @@ public class Bispo extends Robo{
 						novaPosicaoX = this.posicaoXRobo;
 						novaPosicaoY = this.posicaoYRobo;
 						for(int j = 1, h = 1; h <= celulasParaAvancar; h++) {
-							if(novaPosicaoY <= 1 ){
+							if(novaPosicaoY < 1 ){
 								novaPosicaoY = 1;
-							}else if(novaPosicaoY <=1 && novaPosicaoX <=1) {
+							}else if(novaPosicaoY <1 && novaPosicaoX <1) {
 								novaPosicaoX = 1;
 								novaPosicaoY = 1;
 							}else {
@@ -67,9 +68,9 @@ public class Bispo extends Robo{
 						novaPosicaoX = this.posicaoXRobo;
 						novaPosicaoY = this.posicaoYRobo;
 						for(int j = 1, h = 1; h <= celulasParaAvancar; h++) {
-							if(novaPosicaoX >= plano.tamanhoXPlano ){
+							if(novaPosicaoX > plano.tamanhoXPlano ){
 								novaPosicaoX = plano.tamanhoXPlano;
-							}else if(novaPosicaoY >= plano.tamanhoYPlano && novaPosicaoX >= plano.tamanhoXPlano) {
+							}else if(novaPosicaoY > plano.tamanhoYPlano && novaPosicaoX > plano.tamanhoXPlano) {
 								novaPosicaoX = plano.tamanhoXPlano;
 								novaPosicaoY = plano.tamanhoYPlano;
 							}else {

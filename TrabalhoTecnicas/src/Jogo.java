@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jogo {
@@ -5,7 +6,9 @@ public class Jogo {
 	private String nomeUser;
 	private Plano plano;
 	private boolean controle;
+	private int alunosEncontrados, bugsOcorridos;
 	private int numeroAlunos, numeroBugs;
+	private ArrayList<Robo> listaRoboExistem;
 	
 	public Jogo() {
 		controle = false;
@@ -45,12 +48,12 @@ public class Jogo {
 		for (Celula celula : plano.listaCelulas) {
 			if(!celula.listaRobos.isEmpty()){
 				System.out.print(celula.listaRobos.get(celula.listaRobos.size() - 1).tipo);
-			}/*else if(celula.modelo != null) {
+			}else if(celula.modelo != null) {
 				if(celula.modelo instanceof Aluno)
 					System.out.print(celula.modelo.tipo);
 				if(celula.modelo instanceof Bug) 
 					System.out.print(celula.modelo.tipo);
-			}*/else 
+			}else 
 				System.out.print(" * ");
 			if(celula.posicaoYCelula % plano.tamanhoYPlano == 0) {
 				System.out.println();
@@ -83,15 +86,12 @@ public class Jogo {
 	}
 	
 	public void salvarAluno() {
-		/*Celula novaCelula = plano.retornarCelula(x, y);
-		if(novaCelula.modelo instanceof Aluno && novaCelula != null) {
-			novaCelula.modelo = null;
-		}*/
 		for (Celula celula : plano.listaCelulas) {
 			for(Robo robo : celula.listaRobos) {
 				if(celula.modelo instanceof Aluno && !celula.listaRobos.isEmpty()) {
 					celula.modelo = null;
 					robo.addPontos();
+					alunosEncontrados++;
 				}
 			}
 		}
@@ -102,6 +102,7 @@ public class Jogo {
 			for(Robo robo : celula.listaRobos) {
 				if(celula.modelo instanceof Aluno && !celula.listaRobos.isEmpty()) {
 					robo.removePoints();
+					bugsOcorridos++;
 				}
 			}
 		}
@@ -111,21 +112,33 @@ public class Jogo {
  * e assim não teria como um outro robo ganhar a pontuação se chegasse na mesma posição que chegou o anterior
  * */
 	
-	/*public boolean verificarExistenciaAluno() {
-		
-	}*/
+	public boolean verificarExistenciaAluno() {
+		for (Celula celula : plano.listaCelulas) {
+			if(celula.modelo instanceof Aluno) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	public void autobotsRodar() {
 		
 		iniciarJogo();
 		
 		Andador andador = new Andador(1, "Andador", plano.tamanhoXPlano, 1, plano);
+		listaRoboExistem.add(andador);
 		Bispo bispo = new Bispo(2, "Bispo", plano.tamanhoXPlano, 2, plano);
+		listaRoboExistem.add(bispo);
 		Cavalo cavalo = new Cavalo(3, "Cavalo", plano.tamanhoXPlano, 3, plano);
+		listaRoboExistem.add(cavalo);
 		Peao peao = new Peao(4, "Peao", plano.tamanhoXPlano, 4, plano);
+		listaRoboExistem.add(peao);
 		Rainha rainha = new Rainha(5, "Rainha", plano.tamanhoXPlano, 5, plano);
+		listaRoboExistem.add(rainha);
 		Rei rei = new Rei(6, "Rei", plano.tamanhoXPlano, 6, plano);
+		listaRoboExistem.add(rei);
 		Torre torre = new Torre(7, "Torre", plano.tamanhoXPlano, 7, plano);
+		listaRoboExistem.add(torre);
 		for(int i = 0; i < numeroAlunos; i++) {
 			new Aluno(plano);
 		}
@@ -138,43 +151,43 @@ public class Jogo {
 		while(controle) {
 			grade();
 			
-			if(direcaoAndada(andador) == "AVANCAR") {
+			if(direcaoAndada(andador).equals("AVANCAR")) {
 				andador.Avancar(quantidadeAndada(andador));
 			}else {
 				andador.Retroceder(quantidadeAndada(andador));
 			}
 			
-			if(direcaoAndada(bispo) == "AVANCAR") {
+			if(direcaoAndada(bispo).equals("AVANCAR")) {
 				bispo.Avancar(quantidadeAndada(bispo));
 			}else {
 				bispo.Retroceder(quantidadeAndada(bispo));
 			}
 			
-			if(direcaoAndada(cavalo) == "AVANCAR") {
+			if(direcaoAndada(cavalo).equals("AVANCAR")) {
 				cavalo.Avancar(quantidadeAndada(cavalo));
 			}else {
 				cavalo.Retroceder(quantidadeAndada(cavalo));
 			}
 			
-			if(direcaoAndada(andador) == "AVANCAR") {
+			if(direcaoAndada(peao).equals("AVANCAR")) {
 				peao.Avancar();
 			}else {
 				peao.Retroceder();
 			}
 			
-			if(direcaoAndada(rainha) == "AVANCAR") {
+			if(direcaoAndada(rainha).equals("AVANCAR")) {
 				rainha.Avancar(quantidadeAndada(rainha));
 			}else {
 				rainha.Retroceder(quantidadeAndada(rainha));
 			}
 			
-			if(direcaoAndada(rei) == "AVANCAR") {
+			if(direcaoAndada(rei).equals("AVANCAR")) {
 				rei.Avancar(quantidadeAndada(rei));
 			}else {
 				rei.Retroceder(quantidadeAndada(rei));
 			}
 			
-			if(direcaoAndada(torre) == "AVANCAR") {
+			if(direcaoAndada(torre).equals("AVANCAR")) {
 				torre.Avancar(quantidadeAndada(torre));
 			}else {
 				torre.Retroceder(quantidadeAndada(torre));
@@ -184,14 +197,35 @@ public class Jogo {
 			encontrouBug();
 			
 			grade();
+			
+			for (Robo robo : listaRoboExistem) {
+				System.out.println("O(a) " + robo.nome + " tem " + robo.pontos + " pontos!");
+			}
+			
+			controle = verificarExistenciaAluno();
+		}
+		
+		System.out.println("PARABENS!!Voce salvou todos os Alunos, Agora segue o anexo!");
+		System.out.println("O numero de Alunos salvos " + alunosEncontrados + " e o numero de bugs ocorridos foi " + bugsOcorridos + " !!");
+	
+		for (Robo robo : listaRoboExistem) {
+			System.out.println("O(a) " + robo.nome + " tem " + robo.pontos + " pontos!");
 		}
 	}
 	
 	public int quantidadeAndada(Robo robo) {
 		int quantidadeAndada;
+		controle = false;
 		Scanner input = new Scanner(System.in);
-		System.out.println("Quantas casas quer que o(a) " + robo.nome + " ande");
-		return quantidadeAndada = input.nextInt();
+		do {
+			System.out.println("Quantas casas quer que o(a) " + robo.nome + " ande, lembrando que ele tem um maximo de " + robo.quantidadeMaxima + " casas para andar!");
+			quantidadeAndada = input.nextInt();
+			System.out.println();
+			if(quantidadeAndada > robo.quantidadeMaxima || quantidadeAndada < 0) {
+				controle = true;
+			}
+		}while(controle);
+		return quantidadeAndada;
 	}
 	
 	public String direcaoAndada(Robo robo) {

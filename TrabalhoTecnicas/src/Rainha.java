@@ -4,6 +4,7 @@ public class Rainha extends Robo{
 	public Rainha(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		super(id, nome, posicaox, posicaoy, plano);
 		tipo = " § ";
+		quantidadeMaxima = 4;
 	}
 
 	public String verificarRobo() {

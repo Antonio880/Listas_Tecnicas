@@ -4,6 +4,7 @@ public class Rei extends Robo{
 	public Rei(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		super(id, nome, posicaox, posicaoy, plano);
 		tipo = " R ";
+		quantidadeMaxima = 4;
 	}
 
 	public String verificarRobo() {
@@ -26,12 +27,13 @@ public class Rei extends Robo{
 						novaPosicaoX = this.posicaoXRobo;
 						novaPosicaoY = this.posicaoYRobo;
 						for(int j = 1, h = 1; h <= celulasParaAvancar; h++) {
-							if(novaPosicaoX <= plano.tamanhoXPlano && novaPosicaoY >= plano.tamanhoYPlano ){
-								novaPosicaoX = 0;
+							if(novaPosicaoX < 1 && novaPosicaoY > plano.tamanhoYPlano ){
+								novaPosicaoX = 1;
 								novaPosicaoY = plano.tamanhoYPlano;
-							}else if(novaPosicaoX > plano.tamanhoXPlano && novaPosicaoY >= plano.tamanhoYPlano) {
+							}else if(novaPosicaoY >= plano.tamanhoYPlano) {
 								novaPosicaoY = plano.tamanhoYPlano;
-							}else {
+							}
+							else {
 								novaPosicaoX -= j;
 								novaPosicaoY += j;
 							}
@@ -59,7 +61,7 @@ public class Rei extends Robo{
 		Celula novaCelula = null;
 		int novaPosicaoX = 0;
 		int novaPosicaoY = 0;
-		if(celulasParaAvancar <= 2 && celulasParaAvancar >= 0) {
+		if(celulasParaAvancar <= 4 && celulasParaAvancar >= 0) {
 			for (Celula celula : plano.listaCelulas) {
 				for (Robo robo : celula.listaRobos) {
 					if(robo == this) {
@@ -69,9 +71,11 @@ public class Rei extends Robo{
 							if(novaPosicaoX >= plano.tamanhoXPlano && novaPosicaoY <= 1 ){
 								novaPosicaoX = plano.tamanhoXPlano;
 								novaPosicaoY = 1;
-							}else if(novaPosicaoX <= plano.tamanhoXPlano && novaPosicaoX <= 1) {
+							}else if(novaPosicaoX >= plano.tamanhoXPlano) {
 								novaPosicaoX = plano.tamanhoXPlano;
-								novaPosicaoY = 1;
+							}else if(novaPosicaoX >= plano.tamanhoXPlano && novaPosicaoY >= plano.tamanhoYPlano) {
+								novaPosicaoX = plano.tamanhoXPlano;
+								novaPosicaoY = plano.tamanhoYPlano;
 							}else {
 								novaPosicaoX += j;
 								novaPosicaoY -= j;

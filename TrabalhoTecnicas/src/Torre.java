@@ -4,6 +4,7 @@ public class Torre extends Robo{
 	public Torre(int id, String nome, int posicaox, int posicaoy, Plano plano) {
 		super(id, nome, posicaox, posicaoy, plano);
 		tipo = " T ";
+		quantidadeMaxima = 2;
 	}
 
 	
