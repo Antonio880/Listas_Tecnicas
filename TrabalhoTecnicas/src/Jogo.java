@@ -214,7 +214,7 @@ public class Jogo {
 			for(int i = 0; i < robo.celulasVisitadas.size(); i++) {
 				System.out.println(robo.celulasVisitadas.get(i).posicaoXCelula);
 			}
-			System.out.println("O(a) " + robo.nome + " andou pelas seguintes posicoes X: ");
+			System.out.println("O(a) " + robo.nome + " andou pelas seguintes posicoes Y: ");
 			for(int i = 0; i < robo.celulasVisitadas.size(); i++) {
 				System.out.println(robo.celulasVisitadas.get(i).posicaoYCelula);
 			}
