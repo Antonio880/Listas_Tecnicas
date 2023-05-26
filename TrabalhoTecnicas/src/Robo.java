@@ -1,5 +1,6 @@
+import java.util.ArrayList;
 
-public abstract class Robo{
+public abstract class Robo implements AdicionarCelulasAntigas{
 
 	public int id;
 	public String nome;
@@ -8,6 +9,7 @@ public abstract class Robo{
 	public Plano plano;
 	public String tipo;
 	public int quantidadeMaxima;
+	public ArrayList<Celula> celulasVisitadas;
 	public int pontos;
 
 	public Robo(int id, String nome, int posicaox, int posicaoy, Plano plano) {
@@ -17,6 +19,7 @@ public abstract class Robo{
 		this.posicaoYRobo = posicaoy;
 		this.plano = plano;
 		pontos = 0;
+		celulasVisitadas = new ArrayList<Celula>();
 
 		boolean controle;
 		

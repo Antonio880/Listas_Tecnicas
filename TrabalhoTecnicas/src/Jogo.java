@@ -210,7 +210,21 @@ public class Jogo {
 	
 		for (Robo robo : listaRoboExistem) {
 			System.out.println("O(a) " + robo.nome + " tem " + robo.pontos + " pontos!");
+			System.out.println("O(a) " + robo.nome + " andou pelas seguintes posicoes X: ");
+			for(int i = 0; i < robo.celulasVisitadas.size(); i++) {
+				System.out.println(robo.celulasVisitadas.get(i).posicaoXCelula);
+			}
+			System.out.println("O(a) " + robo.nome + " andou pelas seguintes posicoes X: ");
+			for(int i = 0; i < robo.celulasVisitadas.size(); i++) {
+				System.out.println(robo.celulasVisitadas.get(i).posicaoYCelula);
+			}
+			
 		}
+		
+		System.out.println();
+		Robo roboGanhador = roboGanhador();
+		System.out.println("O(a) Robo ganhador foi " + roboGanhador.nome + " e obteve a seguinte pontuacao: " + roboGanhador.pontos + " pontos e o jogador ganhador foi: " + nomeUser);
+		
 	}
 	
 	public int quantidadeAndada(Robo robo) {
@@ -241,6 +255,19 @@ public class Jogo {
 				controle = true;
 			}
 		}while(controle);
+		return null;
+	}
+	
+	public Robo roboGanhador() {
+		int maior = listaRoboExistem.get(0).pontos;
+		for (Robo robo : listaRoboExistem) {
+			if(maior < robo.pontos)
+				maior = robo.pontos;
+		}
+		for (Robo robo : listaRoboExistem) {
+			if(maior == robo.pontos)
+				return robo;
+		}
 		return null;
 	}
 }

@@ -21,30 +21,27 @@ public class Torre extends Robo{
 		Celula novaCelula = null;
 		int novaPosicaoX = 0;
 		int novaPosicaoY = 0;
-		if(celulasParaAvancar <= 2 && celulasParaAvancar >= 0) {
-			for (Celula celula : plano.listaCelulas) {
-				for (Robo robo : celula.listaRobos) {
-					if(robo == this) {
-						novaPosicaoX = this.posicaoXRobo - celulasParaAvancar;
-						novaPosicaoY = this.posicaoYRobo;
-						if(novaPosicaoX <= 1){
-							novaPosicaoX = 1;
-						}
-						novaCelula = plano.retornarCelula(novaPosicaoX, novaPosicaoY);
-					}	
-				}
+		
+		for (Celula celula : plano.listaCelulas) {
+			for (Robo robo : celula.listaRobos) {
+				if(robo == this) {
+					novaPosicaoX = this.posicaoXRobo - celulasParaAvancar;
+					novaPosicaoY = this.posicaoYRobo;
+					if(novaPosicaoX <= 1){
+						novaPosicaoX = 1;
+					}
+					novaCelula = plano.retornarCelula(novaPosicaoX, novaPosicaoY);
+				}	
 			}
-			for(Celula celula : plano.listaCelulas) {
-				if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
-					this.posicaoXRobo = novaPosicaoX;
-					this.posicaoYRobo = novaPosicaoY;
-					celula.listaRobos.add(this);
-				}else {
-					celula.listaRobos.remove(this);
-				}
+		}
+		for(Celula celula : plano.listaCelulas) {
+			if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
+				this.posicaoXRobo = novaPosicaoX;
+				this.posicaoYRobo = novaPosicaoY;
+				celula.listaRobos.add(this);
+			}else {
+				celula.listaRobos.remove(this);
 			}
-		}else {
-			System.out.println("-----MOVIMENTO INVÁLIDO-----");
 		}
 	}
 	
@@ -53,30 +50,35 @@ public class Torre extends Robo{
 		Celula novaCelula = null;
 		int novaPosicaoX = 0;
 		int novaPosicaoY = 0;
-		if(celulasParaAvancar >= 0 && celulasParaAvancar <= 2) {
-			for (Celula celula : plano.listaCelulas) {
-				for (Robo robo : celula.listaRobos) {
-					if(robo == this) {
-						novaPosicaoX = this.posicaoXRobo + celulasParaAvancar;
-						novaPosicaoY = this.posicaoYRobo;
-						if(novaPosicaoX >= plano.tamanhoXPlano){
-							novaPosicaoX = plano.tamanhoXPlano;
-						}
-						novaCelula = plano.retornarCelula(novaPosicaoX, novaPosicaoY);
-					}	
-				}
+		
+		for (Celula celula : plano.listaCelulas) {
+			for (Robo robo : celula.listaRobos) {
+				if(robo == this) {
+					novaPosicaoX = this.posicaoXRobo + celulasParaAvancar;
+					novaPosicaoY = this.posicaoYRobo;
+					if(novaPosicaoX >= plano.tamanhoXPlano){
+						novaPosicaoX = plano.tamanhoXPlano;
+					}
+					novaCelula = plano.retornarCelula(novaPosicaoX, novaPosicaoY);
+				}	
 			}
-			for(Celula celula : plano.listaCelulas) {
-				if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
-					this.posicaoXRobo = novaPosicaoX;
-					this.posicaoYRobo = novaPosicaoY;
-					celula.listaRobos.add(this);
-				}else {
-					celula.listaRobos.remove(this);
-				}
-			}
-		}else {
-			System.out.println("-----MOVIMENTO INVALIDO-----");
 		}
+		for(Celula celula : plano.listaCelulas) {
+			if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
+				this.posicaoXRobo = novaPosicaoX;
+				this.posicaoYRobo = novaPosicaoY;
+				celula.listaRobos.add(this);
+			}else {
+				celula.listaRobos.remove(this);
+			}
+		}
+	}
+	
+	
+	@Override
+	public void addCelulasAntigas() {
+		Celula antigaCelula = null;
+		antigaCelula = plano.retornarCelula(posicaoXRobo, posicaoYRobo);
+		this.celulasVisitadas.add(antigaCelula);
 	}
 }

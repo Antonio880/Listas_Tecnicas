@@ -36,8 +36,11 @@ public class Andador extends Robo{
 				}	
 			}
 		}
+		
+		addCelulasAntigas();
+		
 		for(Celula celula : plano.listaCelulas) {
-			if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
+			if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {		
 				this.posicaoXRobo = novaPosicaoX;
 				this.posicaoYRobo = novaPosicaoY;
 				celula.listaRobos.add(this);
@@ -64,6 +67,9 @@ public class Andador extends Robo{
 				}	
 			}
 		}
+		
+		addCelulasAntigas();
+		
 		for(Celula celula : plano.listaCelulas) {
 			if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
 				this.posicaoXRobo = novaPosicaoX;
@@ -73,5 +79,14 @@ public class Andador extends Robo{
 				celula.listaRobos.remove(this);
 			}
 		}
+	}
+
+
+
+	@Override
+	public void addCelulasAntigas() {
+		Celula antigaCelula = null;
+		antigaCelula = plano.retornarCelula(posicaoXRobo, posicaoYRobo);
+		this.celulasVisitadas.add(antigaCelula);
 	}
 }
