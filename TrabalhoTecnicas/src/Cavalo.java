@@ -27,11 +27,10 @@ public class Cavalo extends Robo{
 						novaPosicaoX = this.posicaoXRobo;
 						novaPosicaoY = this.posicaoYRobo;
 						for(int j = 1, h = 1; h <= celulasParaAvancar; h++) {
-							if(novaPosicaoX < plano.tamanhoXPlano && novaPosicaoY > plano.tamanhoYPlano ){
+							if(novaPosicaoX <= 1 && novaPosicaoY >= plano.tamanhoYPlano ){
 								novaPosicaoX = 1;
 								novaPosicaoY = plano.tamanhoYPlano;
-							}else if(novaPosicaoY > plano.tamanhoYPlano) {
-								novaPosicaoX = plano.tamanhoXPlano;
+							}else if(novaPosicaoY >= plano.tamanhoYPlano) {
 								novaPosicaoY = plano.tamanhoYPlano;
 							}else {
 								novaPosicaoX -= j;

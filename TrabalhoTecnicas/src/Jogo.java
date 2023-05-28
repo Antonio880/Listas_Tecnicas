@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Jogo {
@@ -16,29 +17,47 @@ public class Jogo {
 		numeroBugs = 0;
 		boasVindas();
 		autobotsRodar();
+		listaRoboExistem = new ArrayList<Robo>();
 	}
 	
 	public void boasVindas() {
-		int x, y;
+		int x = 0, y =0;
 		Scanner input = new Scanner(System.in);
 		System.out.println("Olá, digite seu nome:");
 		this.nomeUser = input.nextLine();
 		System.out.println("Seja Bem Vindo " + nomeUser + " ao jogo parecido com xadrez mas nao eh xadrez.");
 		do {
-			System.out.println("Digite o tamanho X:");
-			x = input.nextInt();
-			if(x < 4) {
+			
+			try {
+				System.out.println("Digite o tamanho X:");
+				x = input.nextInt();
+				if(x < 4) {
+					controle = true;
+					System.out.println("Tamanho Invalido");
+				}else {
+					controle = false;
+				}
+			}catch(InputMismatchException e) {
+				System.out.println("Tamanho Invalido!");
 				controle = true;
-				System.out.println("Tamanho Invalido");
+				input.nextLine();
 			}
 		}while(controle);
 		controle = false;
 		do {
-			System.out.println("Agora digite o tamanho Y:");
-			y = input.nextInt();
-			if(y < 7) {
+			try {
+				System.out.println("Agora digite o tamanho Y:");
+				y = input.nextInt();
+				if(y < 7) {
+					controle = true;
+					System.out.println("Tamanho Invalido");
+				}else {
+					controle = false;
+				}
+			}catch(InputMismatchException e) {
+				System.out.println("Tamanho Invalido!");
 				controle = true;
-				System.out.println("Tamanho Invalido");
+				input.nextLine();
 			}
 		}while(controle);
 		plano = new Plano(x, y);
@@ -66,20 +85,36 @@ public class Jogo {
 		Scanner input = new Scanner(System.in);
 		
 		do {
-			System.out.println("Digite o numero de alunos que deve ter no jogo:");
-			numeroAlunos = input.nextInt();
-			if(numeroAlunos > (plano.listaCelulas.size()/2)) { 
+			try {
+				System.out.println("Digite o numero de alunos que deve ter no jogo:");
+				numeroAlunos = input.nextInt();
+				if(numeroAlunos > (plano.listaCelulas.size()/2)) { 
+					controle = true;
+					System.out.println("Tamanho Invalido");
+				}else {
+					controle = false;
+				}
+			}catch(InputMismatchException e) {
+				System.out.println("Tamanho Invalido!");
 				controle = true;
-				System.out.println("Tamanho Invalido");
+				input.nextLine();
 			}
 		}while(controle);
 		controle = false;
 		do {
-			System.out.println("Digite o numero de bugs que deve ter no jogo:");
-			numeroBugs = input.nextInt();
-			if(numeroBugs > (plano.listaCelulas.size()/2)) { 
+			try {
+				System.out.println("Digite o numero de bugs que deve ter no jogo:");
+				numeroBugs = input.nextInt();
+				if(numeroBugs > (plano.listaCelulas.size()/2)) { 
+					controle = true;
+					System.out.println("Tamanho Invalido");
+				}else {
+					controle = false;
+				}
+			}catch(InputMismatchException e) {
+				System.out.println("Tamanho Invalido!");
 				controle = true;
-				System.out.println("Tamanho Invalido");
+				input.nextLine();
 			}
 		}while(controle);
 		
@@ -124,7 +159,9 @@ public class Jogo {
 	public void autobotsRodar() {
 		
 		iniciarJogo();
-		
+		if (this.listaRoboExistem == null){
+            this.listaRoboExistem = new ArrayList<Robo>();
+        }
 		Andador andador = new Andador(1, "Andador", plano.tamanhoXPlano, 1, plano);
 		listaRoboExistem.add(andador);
 		Bispo bispo = new Bispo(2, "Bispo", plano.tamanhoXPlano, 2, plano);
@@ -205,8 +242,10 @@ public class Jogo {
 			controle = verificarExistenciaAluno();
 		}
 		
-		System.out.println("PARABENS!!Voce salvou todos os Alunos, Agora segue o anexo!");
+		System.out.println();
+		System.out.println("----PARABENS!!Voce salvou todos os Alunos, Agora segue o anexo!----");
 		System.out.println("O numero de Alunos salvos " + alunosEncontrados + " e o numero de bugs ocorridos foi " + bugsOcorridos + " !!");
+		System.out.println();
 	
 		for (Robo robo : listaRoboExistem) {
 			System.out.println("O(a) " + robo.nome + " tem " + robo.pontos + " pontos!");

@@ -34,6 +34,9 @@ public class Torre extends Robo{
 				}	
 			}
 		}
+		
+		addCelulasAntigas();
+		
 		for(Celula celula : plano.listaCelulas) {
 			if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
 				this.posicaoXRobo = novaPosicaoX;
@@ -63,6 +66,9 @@ public class Torre extends Robo{
 				}	
 			}
 		}
+		
+		addCelulasAntigas();
+		
 		for(Celula celula : plano.listaCelulas) {
 			if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
 				this.posicaoXRobo = novaPosicaoX;

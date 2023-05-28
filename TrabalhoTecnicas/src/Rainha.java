@@ -42,6 +42,9 @@ public class Rainha extends Robo{
 				}	
 			}
 		}
+		
+		addCelulasAntigas();
+		
 		for(Celula celula : plano.listaCelulas) {
 			if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
 				this.posicaoXRobo = novaPosicaoX;
@@ -80,6 +83,9 @@ public class Rainha extends Robo{
 				}	
 			}
 		}
+		
+		addCelulasAntigas();
+		
 		for(Celula celula : plano.listaCelulas) {
 			if((posicaoXRobo == celula.posicaoXCelula && posicaoYRobo == celula.posicaoYCelula) && celula.listaRobos.contains(this)) {
 				celula.listaRobos.remove(this);
