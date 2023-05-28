@@ -67,12 +67,12 @@ public class Jogo {
 		for (Celula celula : plano.listaCelulas) {
 			if(!celula.listaRobos.isEmpty()){
 				System.out.print(celula.listaRobos.get(celula.listaRobos.size() - 1).tipo);
-			}else if(celula.modelo != null) {
+			}/*else if(celula.modelo != null) {
 				if(celula.modelo instanceof Aluno)
 					System.out.print(celula.modelo.tipo);
 				if(celula.modelo instanceof Bug) 
 					System.out.print(celula.modelo.tipo);
-			}else 
+			}*/else 
 				System.out.print(" * ");
 			if(celula.posicaoYCelula % plano.tamanhoYPlano == 0) {
 				System.out.println();
@@ -267,15 +267,23 @@ public class Jogo {
 	}
 	
 	public int quantidadeAndada(Robo robo) {
-		int quantidadeAndada;
+		int quantidadeAndada = 0;
 		controle = false;
 		Scanner input = new Scanner(System.in);
 		do {
-			System.out.println("Quantas casas quer que o(a) " + robo.nome + " ande, lembrando que ele tem um maximo de " + robo.quantidadeMaxima + " casas para andar!");
-			quantidadeAndada = input.nextInt();
-			System.out.println();
-			if(quantidadeAndada > robo.quantidadeMaxima || quantidadeAndada < 0) {
+			try {
+				System.out.println("Quantas casas quer que o(a) " + robo.nome + " ande, lembrando que ele tem um maximo de " + robo.quantidadeMaxima + " casas para andar!");
+				quantidadeAndada = input.nextInt();
+				System.out.println();
+				if(quantidadeAndada > robo.quantidadeMaxima || quantidadeAndada < 0) {
+					controle = true;
+				}else {
+					controle = false;
+				}
+			}catch(InputMismatchException e) {
+				System.out.println("Tamanho Invalido!");
 				controle = true;
+				input.nextLine();
 			}
 		}while(controle);
 		return quantidadeAndada;

@@ -42,6 +42,9 @@ public class Rei extends Robo{
 				}	
 			}
 		}
+		
+		addCelulasAntigas();
+		
 		for(Celula celula : plano.listaCelulas) {
 			if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
 				this.posicaoXRobo = novaPosicaoX;
@@ -81,6 +84,9 @@ public class Rei extends Robo{
 				}	
 			}
 		}
+		
+		addCelulasAntigas();
+		
 		for(Celula celula : plano.listaCelulas) {
 			if (novaCelula.posicaoXCelula == celula.posicaoXCelula && novaCelula.posicaoYCelula == celula.posicaoYCelula) {
 				this.posicaoXRobo = novaPosicaoX;
