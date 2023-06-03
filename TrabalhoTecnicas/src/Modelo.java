@@ -37,7 +37,7 @@ public abstract class Modelo {
 		this.posicaoXModelo = random.nextInt(plano.tamanhoXPlano);
 		this.posicaoYModelo = random.nextInt(plano.tamanhoYPlano);
 		for(Celula celula : plano.listaCelulas) {
-			if(celula.posicaoXCelula == posicaoXModelo && celula.posicaoYCelula == posicaoYModelo && celula.listaRobos.isEmpty() == true && celula.modelo == null) {
+			if(celula.posicaoXCelula == posicaoXModelo && celula.posicaoYCelula == posicaoYModelo && celula.listaRobos.isEmpty() && celula.modelo == null) {
 				return false;
 			}
 		}
