@@ -10,18 +10,18 @@ import javax.swing.JPanel;
 public class Menu extends JFrame{
 	
 	Display display;
-	JPanel painelFundo;
+	PainelFundo painel;
 	PainelCadastro cadastro;
 	PainelLista lista;
 	
 	public Menu() {
 		
 		this.setSize(600, 600);
-		this.setTitle("Servidor");
+		this.setTitle("Gerenciador de Alunos");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		
-		this.setBackground(Color.white);
+		this.setBackground(new Color(234,238,180));
 		
 		cadastro = new PainelCadastro();
 		cadastro.setVisible(false);
@@ -29,49 +29,43 @@ public class Menu extends JFrame{
 		lista = new PainelLista();
 		lista.setVisible(false);
 		
-		display = new Display();
-		display.setSize(200, 600);
+		painel = new PainelFundo();
+		painel.setPreferredSize(new Dimension(this.getWidth(), 500));
+		painel.setBackground(new Color(234,238,180));
 		
-		painelFundo = new JPanel();
-		painelFundo.setBackground(Color.yellow);
-		painelFundo.setLayout(new BorderLayout());
-		painelFundo.setSize(400, 600);
+		display = new Display();
+		display.setPreferredSize(new Dimension(this.getWidth(), 50));
 		
 		display.cadastrar.addActionListener(new Cadastro());
 		display.listar.addActionListener(new Lista());
-		
-		this.add(cadastro, BorderLayout.CENTER);
-		this.add(lista, BorderLayout.CENTER);
+		display.atualizar.addActionListener(new Atualizacao());
+		display.deletar.addActionListener(new Deletar());
 		
 		this.add(display, BorderLayout.NORTH);
-		this.add(painelFundo, BorderLayout.CENTER);
-		
+		this.add(painel, BorderLayout.CENTER);
 		
 		this.setVisible(true);
 	}
 	
 	private class Cadastro implements ActionListener{
-		
 		public void actionPerformed(ActionEvent e) {
-			if(cadastro.isVisible())
-				cadastro.setVisible(false);
-			else
-				cadastro.setVisible(true);
-		}
+			painel.setConteudoCadastrar();
+		}		
 	}
 	
 	private class Lista implements ActionListener{
-
 		public void actionPerformed(ActionEvent e) {
-			if(lista.isVisible()) {
-				//cadastro.setVisible(false);
-				lista.setVisible(false);
-			}else{
-				cadastro.setVisible(false);
-				lista.setVisible(true);
-			}
+			painel.setConteudoListar();
 		}
-		
-		
+	}
+	private class Atualizacao implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			painel.setConteudoAtualizar();
+		}		
+	}
+	private class Deletar implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			painel.setConteudoDeletar();
+		}		
 	}
 }

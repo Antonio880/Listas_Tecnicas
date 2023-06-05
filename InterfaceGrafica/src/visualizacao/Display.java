@@ -17,7 +17,7 @@ public class Display extends JPanel{
 
 	public Display() {
 		
-		this.setBackground(Color.blue);
+		this.setBackground(new Color(220,228,170));
 		this.setLayout(new FlowLayout());
 		
 		cadastrar = new Button("Cadastrar");
