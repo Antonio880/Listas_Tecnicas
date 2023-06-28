@@ -16,6 +16,8 @@ import views.PainelSouth;
 public class BotaoPecas extends JButton{
 	
 	String tipo;
+	public boolean verificar = true;
+	
 
 	public BotaoPecas(ImageIcon imagem, String tipo) {
 		this.setIcon(imagem);
@@ -32,9 +34,11 @@ public class BotaoPecas extends JButton{
 		
 		public ClicouBotao(BotaoPecas button) {
 			this.button = button;
-			
 		}
 		public void actionPerformed(ActionEvent e) {
+			if(verificar) {
+				verificar = false;
+			}
 			button.setEnabled(false);
 			dado = button.tipo;
 			File arquivo = new File("C:\\Users\\Antônio Cruz\\eclipse-workspace\\Dado.txt");

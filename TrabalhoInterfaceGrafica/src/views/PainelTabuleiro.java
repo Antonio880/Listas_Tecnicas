@@ -19,8 +19,7 @@ import javax.swing.border.Border;
 public class PainelTabuleiro extends JPanel{
 	
 	public ArrayList<Celula> listaCelulas;
-	private int alunosEncontrados;
-	private int BugsEncontrados;
+	
 	
 	public PainelTabuleiro() {
 		
@@ -40,13 +39,13 @@ public class PainelTabuleiro extends JPanel{
 					  celula.button.setBackground(Color.white);
 					  adicionarAleatoriamenteAlunoEBug(celula);
 					  celula.button.setBorderPainted(false);
-					  mostrarAlunoBug(celula);
+					  //mostrarAlunoBug(celula);
 					  painel1.add(celula.button);
 	              }else {
 	            	  celula.button.setBackground(Color.black);
 	            	  adicionarAleatoriamenteAlunoEBug(celula);
 	            	  celula.button.setBorderPainted(false);
-	            	  mostrarAlunoBug(celula);
+	            	  //mostrarAlunoBug(celula);
 	            	  painel1.add(celula.button);
 	              }
 	          }
@@ -55,22 +54,6 @@ public class PainelTabuleiro extends JPanel{
 		this.setVisible(true);
 	}
 	
-	public void setAlunosEncontrados() {
-		this.alunosEncontrados++;
-	}
-
-	public void setBugsEncontrados() {
-		BugsEncontrados++;
-	}
-
-	public int getAlunosEncontrados() {
-		return alunosEncontrados;
-	}
-
-	public int getBugsEncontrados() {
-		return BugsEncontrados;
-	}
-
 	public void mostrarAlunoBug(Celula celula) {
 		if(celula.getAluno() instanceof Aluno) {
 			celula.button.setIcon(celula.getAluno().getImageAluno());
@@ -82,7 +65,7 @@ public class PainelTabuleiro extends JPanel{
 	public void adicionarAleatoriamenteAlunoEBug(Celula celula) {
 	    Random random = new Random();
 	    
-	    if (random.nextDouble() < 0.3) {
+	    if (random.nextDouble() < 0.2) {
 	    	celula.setAluno(new Aluno());
 	    } else if (random.nextDouble() < 0.2) {
 	        celula.setBug(new Bug());

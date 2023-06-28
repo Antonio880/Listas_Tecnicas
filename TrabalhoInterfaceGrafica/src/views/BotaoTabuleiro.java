@@ -1,5 +1,6 @@
 package views;
 
+import model.Controlador;
 import java.io.BufferedReader;
 
 import java.io.FileReader;
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
 
 public class BotaoTabuleiro extends JButton{
 
-	private boolean botaoClicado = true;
+	public boolean botaoClicado = true;
 	private String tipo;
 	public ArrayList<String> linhas;
 	
@@ -37,6 +38,11 @@ public class BotaoTabuleiro extends JButton{
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public void setEnabledCriado(boolean enabled) {
+        super.setEnabled(enabled);
+        setBackground(enabled ? new Color(240, 240, 240) : new Color(124, 163, 255)); // Define a cor de fundo com base no estado habilitado
+    }
 
 	private class Clicado implements ActionListener{
 		
@@ -50,7 +56,7 @@ public class BotaoTabuleiro extends JButton{
 		public void actionPerformed(ActionEvent e) {
 			if(botaoClicado) {
 				botaoClicado = false;
-				button.setEnabled(false);
+				button.setEnabledCriado(false);
 				//button.setBackground(Color.lightGray);
 			}
 			try {

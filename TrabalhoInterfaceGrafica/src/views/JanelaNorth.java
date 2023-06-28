@@ -15,12 +15,13 @@ import model.Jogador;
 
 public class JanelaNorth extends JPanel{
 
-	TextField nomeJogador;
-	JButton jogar;
-	JButton relatorio;
-	Jogador jogador;
+	public TextField nomeJogador;
+	public JButton jogar;
+	public JButton relatorio;
+	public Jogador jogador;
 	
 	public JanelaNorth() {
+		jogador = new Jogador();
 		nomeJogador = new TextField();
 		nomeJogador.setPreferredSize(new Dimension(150,30));
 		jogar = criarBotao("Jogar");
@@ -49,9 +50,9 @@ public class JanelaNorth extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			jogador = new Jogador();
 			jogador.setNome(nomeJogador.getText());
 			System.out.println(jogador.getNome());
+			
 		}
 		
 	}

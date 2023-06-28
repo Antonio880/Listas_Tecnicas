@@ -5,7 +5,7 @@ public class Aluno extends Modelo{
 	
 	
 	public Aluno() {
-		image = new Icon("C:\\Users\\Antônio Cruz\\eclipse-workspace\\TrabalhoInterfaceGrafica\\src\\pessoinha.jpeg" ,30,30);
+		image = new Icon("C:\\Users\\Antônio Cruz\\eclipse-workspace\\TrabalhoInterfaceGrafica\\src\\views\\pessoinha.jpg" ,30,30);
 		
 	}
 

@@ -10,9 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Jogador;
+
 public class PainelFundoNorth extends JPanel{
 
-	JanelaNorth janelaNorte;
+	public JanelaNorth janelaNorte;
 	
 	public PainelFundoNorth() {
 	
